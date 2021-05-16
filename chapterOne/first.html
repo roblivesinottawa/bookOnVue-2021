@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue: The Basics</title>
+</head>
+<body>
+    <ul class="js-items"></ul>
+    <script>
+        $(function () {
+            $.get('https://example.com/items.json')
+            .then(function (data) {
+                var $itemsUl = $('.js-items')
+
+                if (!data.items,length) {
+                    var $noItems = $('li')
+                    $noItems.text('Sorry there are no items')
+                    $itemsUl.append($noItems)
+                } else {
+                    data.items.forEach(function (item) {
+                        var $newItem = $('li')
+                        $newItem.text(item)
+
+                        if (item.includes('blue')){
+                            $newItem.addClass('is_blue')
+                        }
+                        $itemsUl.append($newItem)
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+</html>
+
+
